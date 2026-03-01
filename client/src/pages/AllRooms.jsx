@@ -26,7 +26,7 @@ const RadioButton = ({label, selected = false, onChange = () => {}}) => {
 
 const AllRooms = () => {
 
-  const {searchParams, setSearchParams} = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const {rooms, navigate, currency} = useAppContext();
 
   const [openFilters, setOpenFilters] = useState(false);
@@ -182,7 +182,7 @@ const AllRooms = () => {
             <div className='px-5 pt-5'>
               <p className='font-medium text-gray-800 bd-2'>Price Ranges</p>
               {priceRanges.map((range, index)=>(
-                <Checkbox key={index} label={`$${currency} ${range}`} selected={selectedFilters.priceRange.includes(range)} onChange={(checked) => handleFilterChange(checked, range, 'priceRange')}/>
+                <Checkbox key={index} label={`${currency} ${range}`} selected={selectedFilters.priceRange.includes(range)} onChange={(checked) => handleFilterChange(checked, range, 'priceRange')}/>
               ))}
             </div>
             <div className='px-5 pt-5 pb-5'>
