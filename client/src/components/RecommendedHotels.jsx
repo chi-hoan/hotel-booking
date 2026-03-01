@@ -4,13 +4,12 @@ import Title from './Title'
 import { useAppContext } from '../conext/AppContext'
 import { useState } from 'react'
 
-
 const RecommendedHotels = () => {
     const {rooms, searchedCities} = useAppContext();
     const [recommended, setRecommended] = useState([]);
 
     const filterHotels = () => {
-        const filteredHotels = rooms.slice().filter(room => searchedCities.includes(room.hotel.city));
+        const filteredHotels = rooms.slice().filter( room => searchedCities.includes(room.hotel.city));
         setRecommended(filteredHotels);
     }
 
@@ -33,4 +32,4 @@ const RecommendedHotels = () => {
   )
 }
 
-export default RecommendedHotels
+export default RecommendedHotels;
