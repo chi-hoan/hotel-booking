@@ -40,7 +40,7 @@ export const AppProvider = ({ children }) => {
         if(user) {
             fetchUser();
         }
-    })
+    },[user])
 
     const value = {
         currency, navigate, user, getToken, isOwner, setIsOwner, axios, showHotelReg, setShowHotelReg, searchedCities, setSearchedCities
