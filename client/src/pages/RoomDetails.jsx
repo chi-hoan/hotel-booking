@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { assets, facilityIcons, roomsDummyData, roomCommonData } from '../assets/assets';
+import { assets, facilityIcons, roomCommonData } from '../assets/assets';
 import StarRating from '../components/StarRating';
+import { useAppContext } from '../conext/AppContext';
 
 const RoomDetails = () => {
     const {id} = useParams();
+    const {rooms, navigate, axios, getToken} = useAppContext()
     const [room, setRoom] =useState (null);
     const [mainImage, setMainImage] = useState(null);
+    const [checkInDate, setCheckInDate] = useState(null);
+    const [checkOutDate, setCheckOutDate] = useState(null);
+    const [guests, setGuests] = useState(1);
 
-    useEffect(() => {
-        const room = roomsDummyData.find(room => room._id === id)
+    const [isAvailable, setIsAvailable] = useState(false);
+
+    useEffect(()=>{
+        const room = rooms.find(room => room._id === id)
         room && setRoom(room)
         room && setMainImage(room.images[0])
-    }, []);
+    },[rooms])
 
   return room && (
     <div className='py-28 md:py-35 px-4 md:px-16 lg:px-24 xl:px-32'>
