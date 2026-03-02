@@ -18,7 +18,7 @@ const app = express()
 app.use(cors()) // Enable CORS
 
 // API to listen to Stripe Webhooks
-app.post('/api/stripe', express.raw({ type : "application/json" }), stripeWebhooks)
+app.post('/api/bookings/stripe-webhook', express.raw({ type : "application/json" }), stripeWebhooks)
 
 // Middleware
 app.use(express.json())
